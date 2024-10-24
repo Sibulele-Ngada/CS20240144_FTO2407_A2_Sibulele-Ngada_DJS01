@@ -15,12 +15,10 @@ const fbr = 0.5; // fuel burn rate (kg/s)
 
 // Pick up an error with how the function below is called and make it robust to such errors
 const calcNewVel = (vel, acc, time) => {
-  console.error(
+  console.warn(
     `Velocity is in km/h but acceleration is in m/s2. Conversion needed`
-  );
-  console.error(
-    `Velocity is in km/h but time is in seconds. Conversion needed`
-  );
+  ); // Conversion issue warning. Error throw not used as no interruption occurs at runtime
+  console.warn(`Velocity is in km/h but time is in seconds. Conversion needed`); // Conversion issue warning. Error throw not used as no interruption occurs at runtime
   return vel + acc * 12960 * (time / 60 / 60);
 };
 
