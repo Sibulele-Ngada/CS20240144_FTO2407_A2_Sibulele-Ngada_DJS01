@@ -18,7 +18,7 @@ const calcNewVel = (vel, acc, time) => {
   return vel + acc * time;
 };
 
-const d2 = d + vel * time; //calcultes new distance
+const d2 = d + vel * (time / 60 / 60); //calcultes new distance
 const rf = fuel - fbr * time; //calculates remaining fuel
 const vel2 = calcNewVel(acc, vel, time); //calculates new velocity based on acceleration
 
