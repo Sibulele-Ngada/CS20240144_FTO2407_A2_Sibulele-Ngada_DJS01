@@ -18,14 +18,16 @@ const calcNewVel = (vel, acc, time) => {
   console.warn(
     `Velocity is in km/h but acceleration is in m/s2. Conversion needed`
   ); // Conversion issue warning. Error throw not used as no interruption occurs at runtime
+  const convertedAcc = acc * 12960;
   console.warn(`Velocity is in km/h but time is in seconds. Conversion needed`); // Conversion issue warning. Error throw not used as no interruption occurs at runtime
-  return vel + acc * 12960 * (time / 60 / 60);
+  const hours = time / 60 / 60;
+  return vel + convertedAcc * hours;
 };
 
-const d2 = d + vel * (time / 60 / 60); //calcultes new distance
-const rf = fuel - fbr * time; //calculates remaining fuel
-const vel2 = calcNewVel(vel, acc, time); //calculates new velocity based on acceleration
+const newDistance = d + vel * (time / 60 / 60); //calcultes new distance
+const remainingFuel = fuel - fbr * time; //calculates remaining fuel
+const newVel = calcNewVel(vel, acc, time); //calculates new velocity based on acceleration
 
-console.log(`Corrected New Velocity: ${vel2} km/h`);
-console.log(`Corrected New Distance: ${d2} km`);
-console.log(`Corrected Remaining Fuel: ${rf} kg`);
+console.log(`Corrected New Velocity: ${newVel} km/h`);
+console.log(`Corrected New Distance: ${newDistance} km`);
+console.log(`Corrected Remaining Fuel: ${remainingFuel} kg`);
